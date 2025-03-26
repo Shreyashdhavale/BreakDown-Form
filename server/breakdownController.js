@@ -50,3 +50,13 @@ Submitted At: ${breakdown.createdAt}`,
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+exports.getAllBreakdowns = async (req, res) => {
+  try {
+    const breakdowns = await Breakdown.find();
+    res.status(200).json(breakdowns);
+  } catch (error) {
+    console.error('Error fetching breakdowns:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
