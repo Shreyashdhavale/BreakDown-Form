@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary-color: #1A3F88;  /* Tata Motors Red */
+  --secondary-color: #005BAA;  /* Tata Motors Blue */
+  --background-color: #F4F4F4;
+  --text-color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  
+}
+
+
+.tata-breakdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('../public/background.jpg') no-repeat center center fixed;
+  background-size: cover; /* Add this to ensure full coverage */
+  padding: 20px;
+}
+
+.form-wrapper {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+  padding: 30px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tata-logo {
+  max-width: 200px;
+  margin-bottom: 15px;
+}
+
+.form-header h1 {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.breakdown-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+
+.required {
+  color: var(--primary-color);
+  margin-left: 4px;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 91, 170, 0.1);
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #1A3F88;
+}
+
+.btn-submit:disabled {
+  background-color: #CCC;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Submission Button Animations */
+.btn-submit {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.btn-submit.submitting {
+  cursor: wait;
+  background-color: var(--secondary-color);
+}
+
+.btn-submit.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-submit.error {
+  background-color: #F44336;
+  color: white;
+}
+
+/* Spinner Animation */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner-blade {
+  background-color: white;
+  width: 6px;
+  height: 25px;
+  margin: 0 3px;
+  border-radius: 3px;
+  animation: spinner-loading 1.2s infinite linear;
+  transform-origin: center;
+}
+
+.spinner-blade:nth-child(1) {
+  animation-delay: -1.2s;
+}
+
+.spinner-blade:nth-child(2) {
+  animation-delay: -0.9s;
+}
+
+.spinner-blade:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+.spinner-blade:nth-child(4) {
+  animation-delay: -0.3s;
+}
+
+@keyframes spinner-loading {
+  0% {
+    opacity: 0.5;
+    transform: scaleY(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scaleY(0.7);
+  }
+}
